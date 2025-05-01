@@ -1,0 +1,2 @@
+line highlight
+disable shit on long lines
