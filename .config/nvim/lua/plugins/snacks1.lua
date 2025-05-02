@@ -1,33 +1,33 @@
 return {
-  "snacks.nvim",
-  opts = {
-    bigfile = { enabled = true },
-    indent = { enabled = true },
-    input = { enabled = true },
-    notifier = { enabled = true },
-    scope = { enabled = true },
-    scroll = {
-      enabled = true,
-      animate = {
-        duration = { step = 25, total = 150 },
-        easing = "outExpo",
-      },
-      -- faster animation when repeating scroll after delay
-      animate_repeat = {
-        delay = 100, -- delay in ms before using the repeat animation
-        duration = { step = 5, total = 50 },
-        easing = "outExpo",
-      },
-      statuscolumn = { enabled = false }, -- we set this in options.lua
-      toggle = { map = LazyVim.safe_keymap_set },
-      words = { enabled = true },
+	"snacks.nvim",
+	opts = {
+		bigfile = { enabled = true },
+		indent = { enabled = true },
+		input = { enabled = true },
+		notifier = { enabled = true },
+		scope = { enabled = true },
+		scroll = {
+			enabled = true,
+			animate = {
+				duration = { step = 25, total = 150 },
+				easing = "outExpo",
+			},
+			-- faster animation when repeating scroll after delay
+			animate_repeat = {
+				delay = 100, -- delay in ms before using the repeat animation
+				duration = { step = 5, total = 50 },
+				easing = "outExpo",
+			},
+			statuscolumn = { enabled = false }, -- we set this in options.lua
+			toggle = { map = LazyVim.safe_keymap_set },
+			words = { enabled = true },
 
-      dashboard = {
-        preset = {
-          pick = function(cmd, opts)
-            return LazyVim.pick(cmd, opts)()
-          end,
-          header = [[
+			dashboard = {
+				preset = {
+					pick = function(cmd, opts)
+						return LazyVim.pick(cmd, opts)()
+					end,
+					header = [[
         ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
         ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    
         ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       
@@ -48,9 +48,9 @@ return {
           { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
-        },
-      },
-    },
+				},
+			},
+		},
 
   -- stylua: ignore
   keys = {
@@ -63,6 +63,6 @@ return {
     end, desc = "Notification History" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
   },
-  },
+	},
 }
 --#region-

@@ -28,7 +28,7 @@ function nuke-quarantine() {
 	sudo mkdir -v /root/quarantine
 }
 
-eval $(thefuck --alias)
+eval $(thefuck --alias )
 
 unset GDK_BACKEND
 
