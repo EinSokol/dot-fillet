@@ -122,7 +122,6 @@ plugins=(git)
 export EDITOR='nvim'
 # fi
 #
-export GCM_CREDENTIAL_STORE='secretservice'
 #
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -148,3 +147,5 @@ source $ZSH/oh-my-zsh.sh
 eval "$(atuin init zsh)"
 
 alias dot-fillet='/usr/bin/git --git-dir=/home/Administrator/.git-dot-fillet/ --work-tree=/home/Administrator'
+
+export GCM_CREDENTIAL_STORE='secretservice'

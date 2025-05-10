@@ -18,16 +18,17 @@ return {
 				duration = { step = 5, total = 50 },
 				easing = "outExpo",
 			},
-			statuscolumn = { enabled = false }, -- we set this in options.lua
-			toggle = { map = LazyVim.safe_keymap_set },
-			words = { enabled = true },
+		},
+		statuscolumn = { enabled = false }, -- we set this in options.lua
+		toggle = { map = LazyVim.safe_keymap_set },
+		words = { enabled = false },
 
-			dashboard = {
-				preset = {
-					pick = function(cmd, opts)
-						return LazyVim.pick(cmd, opts)()
-					end,
-					header = [[
+		dashboard = {
+			preset = {
+				pick = function(cmd, opts)
+					return LazyVim.pick(cmd, opts)()
+				end,
+				header = [[
         ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
         ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    
         ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       
@@ -48,9 +49,9 @@ return {
           { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
-				},
 			},
 		},
+	},
 
   -- stylua: ignore
   keys = {
@@ -63,6 +64,5 @@ return {
     end, desc = "Notification History" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
   },
-	},
 }
 --#region-
