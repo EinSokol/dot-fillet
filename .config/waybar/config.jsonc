@@ -4,33 +4,29 @@
   // "position": "bottom", // Waybar position (top|bottom|left|right)
   "height": 6, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
-  "spacing": 2, // Gaps between modules (4px)
+  "spacing": 0, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
     "mpd",
     "idle_inhibitor",
-    "network",
     "pulseaudio",
-    "cpu",
-    "memory",
-    "temperature",
     "backlight",
-    "sway/workspaces",
-    "sway/mode",
-    "sway/scratchpad",
+    "network",
+    "cpu",
+    "temperature",
+    "memory",
     "custom/media"
   ],
   "modules-center": [
-    "sway/window"
+    "hyprland/workspaces"
   ],
   "modules-right": [
-    "keyboard-state",
-    "sway/language",
+    "mpris",
+    "cava",
+    "tray",
     "battery",
     "battery#bat2",
-    "clock",
-    "tray",
-    "custom/power"
+    "clock"
   ],
   // Modules configuration
   // "sway/workspaces": {
@@ -49,6 +45,76 @@
   //         "default": ""
   //     }
   // },
+  "mpris": {
+    "format": "{status_icon} {artist} ~ <span style=\"italic\">{title}</span>",
+    "tooltip-format": "{dynamic}",
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "default": "▶",
+      "paused": "⏸"
+    },
+    "dynamic-order": [
+      "artist",
+      "album",
+      "title",
+      "position",
+      "length"
+    ],
+    "dynamic-separator": " ~ ",
+    "dynamic-len": -1
+  },
+  // "ignored-players": ["firefox"]
+  "cava": {
+    //"cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+    // "cava_config": "/home/Administrator/.config/cava/config",
+    "framerate": 30,
+    "autosens": 1,
+    "sensitivity": 3,
+    "bars": 24,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+    "sleep_timer": 5,
+    "hide_on_silence": false,
+    "method": "pulse",
+    "source": "auto",
+    "stereo": false,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.3,
+    "input_delay": 2,
+    "format-icons": [
+      "⢀",
+      "⣀",
+      "⣠",
+      "⣤",
+      "⣴",
+      "⣶",
+      "⣾",
+      "⣿"
+      //"▁",
+      //"▂",
+      //"▃",
+      //"▄",
+      //"▅",
+      //"▆",
+      //"▇",
+      //"█"
+    ],
+    "actions": {
+      "on-click": "mode"
+    }
+  },
+  "hyprland/workspaces": {
+    "active-only": true,
+    "show-special": true,
+    "special-visible-only": true,
+    "format": "{name}"
+  },
   "keyboard-state": {
     "numlock": true,
     "capslock": true,
@@ -114,18 +180,18 @@
     "format-alt": "{:%Y-%m-%d}"
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": " {usage}%",
     "tooltip": false
   },
   "memory": {
-    "format": "{}% "
+    "format": " {}%"
   },
   "temperature": {
     // "thermal-zone": 2,
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
+    //"critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}°C {icon}",
+    "format": "{icon}{temperatureC}°C",
     "format-icons": [
       "",
       "",
@@ -161,11 +227,11 @@
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
     ]
   },
   "battery#bat2": {
@@ -184,13 +250,14 @@
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) ",
+    "interval": 60,
+    "format-wifi": "{signaldBm}dBm | ({signalStrength}%)  ",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "on-click": "kitty nmtui"
+    "on-click-right": "kitty nmtui"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
@@ -199,21 +266,24 @@
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
     "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format-source-muted": " ",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
       "default": [
         "",
-        "",
-        ""
+        " ",
+        " "
       ]
     },
-    "on-click": "hyprctl dispatch exec '[ size 1% 1%; move 100% 100% ] kitty pavucontrol'"
+    "on-click": "amixer sset Master toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "amixer sset Master 5%+",
+    "on-scroll-down": "amixer sset Master 5%-"
   },
   "custom/media": {
     "format": "{icon} {text}",
@@ -228,7 +298,7 @@
     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
   },
   "custom/power": {
-    "format": "⏻ ",
+    "format": "⏻",
     "tooltip": true,
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
