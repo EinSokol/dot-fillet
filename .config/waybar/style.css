@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Iosevka Term SS01, Montserrat SemiBold, Roboto, Helvetica, Arial, sans-serif;
+    font-family: FontAwesome, /*Iosevka Term SS01, */Montserrat, Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #ccffff;
 }
@@ -11,6 +11,7 @@ window#waybar {
     border-top: none;
     transition-property: background-color;
     transition-duration: .5s;
+    padding: 100px;
 }
 
 window#waybar.hidden {
@@ -39,7 +40,7 @@ window#waybar.chromium {
     box-shadow: inset 0px 0px 3px 1px rgba(0,0,0,0.8);
     background-color: rgba(15,1,15,0.85)/*rgba(255,255,255,0.15)*/;
     padding: 0 10px;
-    margin: 0 2px;
+    margin: 0 2px 2px 0;
 }
 
 button {

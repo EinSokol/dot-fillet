@@ -200,7 +200,7 @@
   },
   "backlight": {
     // "device": "acpi_video1",
-    "format": "{percent}% {icon}",
+    "format": "{icon} {percent}%",
     "format-icons": [
       "",
       "",
@@ -251,7 +251,7 @@
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "interval": 60,
-    "format-wifi": "{signaldBm}dBm | ({signalStrength}%)  ",
+    "format-wifi": "  {signalStrength}% | {signaldBm}dBm",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
@@ -261,11 +261,11 @@
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{icon} {volume}% {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
+    "format-source": " {volume}%",
     "format-source-muted": " ",
     "format-icons": {
       "headphone": " ",

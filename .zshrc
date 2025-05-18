@@ -4,7 +4,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
+#
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -113,10 +113,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#038793"
+
+plugins=(git colored-man-pages safe-paste zsh-autosuggestions zsh-syntax-highlighting you-should-use)
 
 # User configuration
-
+bindkey '^ ' autosuggest-accept
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -151,11 +154,20 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-eval "$(atuin init zsh)"
 
+eval "$(atuin init zsh)"
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
 alias dot-fillet='/usr/bin/git --git-dir=/home/Administrator/.git-dot-fillet/ --work-tree=/home/Administrator'
 bindkey '^H' backward-kill-word
 export GCM_CREDENTIAL_STORE='secretservice'
 
+alias ls='/usr/bin/eza'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias pacman='echo yay dumbass'
+
+zsh --version | lolcat -f
+echo
+fortune anti-jokes archlinux cookie disclaimer glados linux | fumosay -gb | lolcat -f
